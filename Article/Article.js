@@ -1,11 +1,11 @@
 // Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
 
 class Article {
-  constructor(article) {
+  constructor(domElement) {
     // assign this.domElement to the passed in domElement
-    this.domElement = article;
+    this.domElement = domElement;
     // create a reference to the ".expandButton" class. 
-    this.expandButton = article.querySelector('.expandButton');
+    this.expandButton = domElement.querySelector('.expandButton');
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => this.expandArticle())
   }
