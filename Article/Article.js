@@ -1,13 +1,24 @@
 // Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
 
 class Article {
-  constructor(domElement) {
+  constructor(article) {
     // assign this.domElement to the passed in domElement
-    this.domElement = domElement;
+    this.domElement = article;
+    this.paragraphs = article.querySelectorAll('p');
     // create a reference to the ".expandButton" class. 
-    this.expandButton = domElement.querySelector('.expandButton');
+    this.expandButton = article.querySelector('.expandButton');
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    this.expandButton.addEventListener('click', () => this.expandArticle())
+    this.expandButton.addEventListener('click', () => this.expandArticle());
+
+    this.paragraphs.forEach( p => {
+      p.addEventListener('mouseover', () => this.highlight());
+      
+    })
+    
+    this.paragraphs.forEach( p => {
+      p.addEventListener('mouseout', () => this.unhighlight());
+    })
+
   }
 
   expandArticle() {
@@ -18,6 +29,20 @@ class Article {
     } else {
       this.expandButton.textContent = 'Expand'; 
     }
+  }
+  highlight() {
+    this.paragraphs.forEach( p => {
+        p.style.color = 'coral';
+        p.style.textShadow = '-1px 1px black';
+        TweenMax.to("p", 3, {scale: 1.1});
+    });
+  }
+  unhighlight() {
+    this.paragraphs.forEach( p => {
+        p.style.color = 'black';
+        p.style.textShadow = 'none';
+        TweenMax.to("p", 1, {scale: 1});
+    });
   }
 }
 
