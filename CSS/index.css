@@ -35,6 +35,13 @@
   margin: 0;
   font-size: 48px;
 }
+@keyframes slideRight {
+  to {
+    display: block;
+    width: 300px;
+    background-color: #bada55;
+  }
+}
 .menu-button {
   position: absolute;
   left: 20px;
@@ -62,7 +69,12 @@
   text-align: center;
 }
 .menu--open {
+  overflow: hidden;
   display: block;
+  width: 1px;
+  animation-name: slideRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }
 .articles {
   margin-top: 95px;
